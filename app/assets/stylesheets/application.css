@@ -13,3 +13,14 @@
  *= require_tree .
  *= require_self
  */
+body
+{
+background-color: #ff69b4;
+font-family: "Comic Sans MS"
+}
+
+.game
+{
+width: 50%; 
+margin-left: 40%; 
+}

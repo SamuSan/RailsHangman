@@ -1,0 +1,18 @@
+<h1 class="game_title">Hang The Man</h1>
+<% if alert %>
+<div id="alert">
+  <%= alert %></div>
+<% end %>
+<p class="letters_display">
+  Guessed letters:
+  <%= @game.incorrectly_guessed_letters.join(" ")  %></p>
+<p class="letters_display">
+  Current Progress:
+  <%= letters_filterd_by_guessed(@game, @game.all_guessed_letters).join(" ") %></p>
+<% if @game.in_progress? %>
+<%= render 'guess_input' %>
+<% end %>
+<%= render 'game_display' %>
+<% if !@game.in_progress? %>
+<%= render 'win_lose_display' %> 
+<% end %>   

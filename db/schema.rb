@@ -14,18 +14,18 @@
 ActiveRecord::Schema.define(version: 20141124033922) do
 
   create_table "games", force: true do |t|
+    t.string   "secret_word", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "guesses", force: true do |t|
+    t.integer  "game_id",    null: false
+    t.string   "guess",      null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "secrets", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+  add_index "guesses", ["game_id"], name: "index_guesses_on_game_id"
 
 end
