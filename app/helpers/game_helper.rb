@@ -4,7 +4,7 @@ module GameHelper
   end
 
   def hangman_image_filename(game)
-    size = game.incorrectly_guessed_letters.size
+    size = game.total_incorrect_guesses
     "hangman_#{size}.png"
   end
 
