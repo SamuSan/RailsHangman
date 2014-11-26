@@ -9,6 +9,7 @@
 <p class="letters_display">
   Current Progress:
   <%= letters_filterd_by_guessed(@game, @game.all_guessed_letters).join(" ") %></p>
+<label>Number of turns taken: <%= @guesses.size %> are we in progress?? <%= @game.in_progress? %></label> 
 <% if @game.in_progress? %>
 <%= render 'guess_input' %>
 <% end %>

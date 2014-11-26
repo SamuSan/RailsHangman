@@ -20,7 +20,7 @@ class Game < ActiveRecord::Base
   def won?
      (secret_word.chars - all_guessed_letters).empty?
   end
-  
+
   private
 
   def incorrect_single_letter_guess(guess)
@@ -41,6 +41,6 @@ class Game < ActiveRecord::Base
   end
 
   def lost?
-    guesses.size >= 12   
+    incorrectly_guessed_letters.size >= 12   
   end
 end
