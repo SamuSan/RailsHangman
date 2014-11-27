@@ -8,7 +8,7 @@ class Guess < ActiveRecord::Base
   end
 
   def whole_word?
-    guess.size > 1  
+    !single_letter?
   end
 
   def matches_word?(word)

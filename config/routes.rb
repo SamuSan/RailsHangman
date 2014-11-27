@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'games#index'
   resources :games do
+    get 'games/:id' => 'games#show'
     resources  :guesses, only: :create 
   end
   # Example of regular route:

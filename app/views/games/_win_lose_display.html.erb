@@ -1,8 +1,5 @@
 <% if !@game.won? %>
   <%= render 'lost_word_display' %>    
-<% end %> 
-<div>
- <%= image_tag(win_lose_image(@game)) %>
-
-</div>
+<% end %>
 <div> <%= button_to "AGAIN! AGAIN! AGAIN!", games_path, method: :post %></div>
+<div><%= image_tag(win_lose_image(@game)) %></div>

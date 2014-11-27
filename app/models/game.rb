@@ -11,37 +11,45 @@ class Game < ActiveRecord::Base
     !won? && !lost?
   end
 
-  def incorrectly_guessed_letters
-    guesses.map { |guess| guess.guess if incorrect_single_letter_guess(guess) }.compact
+  def incorrect_single_letter_guesses
+    letter_guesses.select { |guess| incorrect_letter?(guess.guess) }.map(&:guess)
   end
 
   def all_guessed_letters
-    guesses.map { |guess| guess.guess if guess.single_letter? }
+    letter_guesses.map(&:guess)
   end
 
   def won?
-     (secret_word.chars - all_guessed_letters).empty? || word_guessed?
+    all_letters_guessed? || word_guessed?
   end
 
   def total_incorrect_guesses
-    incorrectly_guessed_letters.size + incorrect_whole_word_guesses.size
+    incorrect_single_letter_guesses.size + incorrect_whole_word_guesses.size
   end
 
   private
 
+  def all_letters_guessed?
+    (secret_word.chars - all_guessed_letters).empty? 
+  end
+
+  def word_guesses
+    guesses.select(&:whole_word?)
+  end
+
+  def letter_guesses
+    guesses.select(&:single_letter?)
+  end
+
   def word_guessed?
-    guesses.each(&:guess).any? { |guess| guess.matches_word?(secret_word) }
+    word_guesses.any? { |guess| guess.matches_word?(secret_word) } 
   end
 
   def incorrect_whole_word_guesses
-    guesses.select { |guess| guess.whole_word? && !guess.matches_word?(secret_word) }
+    word_guesses.select { |guess| !guess.matches_word?(secret_word) }
   end
 
-  def incorrect_single_letter_guess(guess)
-    guess.single_letter? && incorrect?(guess.guess)
-  end
-
-  def incorrect?(guess)
+  def incorrect_letter?(guess)
     !secret_word.chars.include?(guess)
   end
 

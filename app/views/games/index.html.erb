@@ -1,2 +1,12 @@
-<h1>PLAY A GAMES..</h1>
-<%= button_to "Hang a Man", games_path, method: :post %>
+<%= button_to "PLAY NEW", games_path, method: :post %>
+<ul>
+  <% @games.each do |game| %>
+  <li>
+ <%= link_to "Game: #{game.id}", game %> 
+  </li>
+<% end %>
+
+
+
+
+

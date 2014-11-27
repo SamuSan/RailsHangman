@@ -13,23 +13,39 @@
  *= require_tree .
  *= require_self
  */
-body
-{
-background-color: #ff69b4;
-font-family: "Comic Sans MS"
+body{
+  background-color: #CCCCCC;
+  font-family: "Zapfino Regular";
+  /*color: white;*/
 }
-
-.game
-{
-width: 50%; 
-margin-left: 40%; 
+input[type=submit]{ 
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  border-left: 0px;
+  border-right: 0px;
+  width: 30%;
+  background-color: #C9C9C9;
+  font-family: "American Typewriter";
+  font-size: 20px;
 }
-.game_title
-{
-  font-size: 40px;
+ul{
+  list-style: none;
+}
+.game{
+width: 50%;
+height: 20%; 
+margin: 0% 30% 0% 40%; 
+}
+.game_title{
+  font-size: 50px;
   text-align: center;
+  border-bottom:  1px solid black;
   width: 90%;
-  margin-left: 5%;
-  margin-right: 5%;
-  background-color: #3366FF;
+  height: 20%;
+  margin:2% 5% 1% 5%;
+
+}
+.game_table{
+  font-size:20px;
+  margin:0% 0% 5% 0%;
 }

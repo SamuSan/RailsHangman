@@ -2,22 +2,42 @@
 <div id="alert">
   <%= alert %></div>
 <% end %>
-<p class="letters_display">
- <label class="guessed_label">Guessed letters:</label> 
-  <%= @game.incorrectly_guessed_letters.join(" ")  %></p>
-<p class="letters_display">
-  Current Progress:
-  <%= letters_filterd_by_guessed(@game, @game.all_guessed_letters).join(" ") %></p>
-  
+
+<table class="game_table">
+  <tr>
+    <td>
+     <label class="guessed_label">Guessed Letters:</label>
+    </td>
+    <td>
+      <%= @game.incorrect_single_letter_guesses.join(" ")  %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <label>Current Progress:</label> 
+    </td> 
+    <td>
+      <%= letters_filterd_by_guessed(@game, @game.all_guessed_letters).join(" ") %>
+    </td>
+  </tr>
+  <tr>
+    
+  </tr>
+</table>
+
+
+
+
+
+<div>
 <% if @game.in_progress? %>
-  <%= render 'guess_input' %>
+<%= render 'guess_input' %>
 <% end %>
-<div class="game_display">
-  <%= render 'game_display' %>
 </div>
 
+<div class="game_display">
+  <%= render 'game_display' %></div>
 
 <% if !@game.in_progress? %>
-  <%= render 'win_lose_display' %> 
-<% end %>   
-
+<%= render 'win_lose_display' %>
+<% end %>
